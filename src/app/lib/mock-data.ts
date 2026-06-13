@@ -8,15 +8,15 @@ export const systemMetrics = [
 ];
 
 export const initialTasks = [
-  { id: '1', name: 'Social Scraper v2', schedule: '00:00 UTC', status: 'Completed', priority: 'High' },
-  { id: '2', name: 'Sentiment Analysis Pipeline', schedule: 'Every 5m', status: 'In Progress', priority: 'Critical' },
-  { id: '3', name: 'Audit Log Rotation', schedule: 'Daily', status: 'Pending', priority: 'Low' },
-  { id: '4', name: 'User Behavior Mapping', schedule: 'Weekly', status: 'Pending', priority: 'Medium' },
+  { id: '1', name: 'Scraper Social v2', schedule: '00:00 UTC', status: 'Completado', priority: 'Alta' },
+  { id: '2', name: 'Pipeline de Sentimiento', schedule: 'Cada 5m', status: 'En Progreso', priority: 'Crítica' },
+  { id: '3', name: 'Rotación de Log de Auditoría', schedule: 'Diario', status: 'Pendiente', priority: 'Baja' },
+  { id: '4', name: 'Mapeo de Comportamiento', schedule: 'Semanal', status: 'Pendiente', priority: 'Media' },
 ];
 
 export const recentLogs = [
-  { id: 'l1', timestamp: '2023-10-27T10:05:00Z', level: 'INFO', message: 'Worker node 04 connected successfully' },
-  { id: 'l2', timestamp: '2023-10-27T10:06:12Z', level: 'WARN', message: 'High memory usage detected on pod "flow-analyzer"' },
-  { id: 'l3', timestamp: '2023-10-27T10:07:45Z', level: 'INFO', message: 'Sentiment analysis job batch #882 completed' },
-  { id: 'l4', timestamp: '2023-10-27T10:09:10Z', level: 'ERROR', message: 'API Rate limit reached for service "X-API"' },
+  { id: 'l1', timestamp: '2023-10-27T10:05:00Z', level: 'INFO', message: 'Nodo trabajador 04 conectado con éxito' },
+  { id: 'l2', timestamp: '2023-10-27T10:06:12Z', level: 'WARN', message: 'Alto uso de memoria detectado en pod "flow-analyzer"' },
+  { id: 'l3', timestamp: '2023-10-27T10:07:45Z', level: 'INFO', message: 'Lote de análisis de sentimiento #882 completado' },
+  { id: 'l4', timestamp: '2023-10-27T10:09:10Z', level: 'ERROR', message: 'Límite de API alcanzado para el servicio "X-API"' },
 ];

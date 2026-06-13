@@ -22,11 +22,11 @@ export default function TasksPage() {
     <div className="space-y-8 animate-in fade-in duration-700">
       <div className="flex items-center justify-between">
         <div className="flex flex-col gap-2">
-          <h2 className="text-3xl font-headline font-bold text-foreground">Task Orchestrator</h2>
-          <p className="text-muted-foreground">Manage distributed work queues and recurring system processes.</p>
+          <h2 className="text-3xl font-headline font-bold text-foreground">Orquestador de Tareas</h2>
+          <p className="text-muted-foreground">Gestiona las colas de trabajo distribuidas y los procesos recurrentes del sistema.</p>
         </div>
         <Button className="glow-primary">
-          <Plus className="w-4 h-4 mr-2" /> Create Task
+          <Plus className="w-4 h-4 mr-2" /> Crear Tarea
         </Button>
       </div>
 
@@ -35,10 +35,10 @@ export default function TasksPage() {
           <CardHeader className="flex flex-row items-center justify-between border-b border-white/5">
              <div className="flex items-center gap-2">
               <ListTodo className="w-5 h-5 text-primary" />
-              <CardTitle className="font-headline text-lg uppercase tracking-wider">Active Queue</CardTitle>
+              <CardTitle className="font-headline text-lg uppercase tracking-wider">Cola Activa</CardTitle>
             </div>
             <div className="flex items-center gap-2">
-               <Badge variant="outline" className="text-primary border-primary/20">3 RUNNING</Badge>
+               <Badge variant="outline" className="text-primary border-primary/20">3 EN CURSO</Badge>
                <Badge variant="outline" className="text-muted-foreground border-white/10">12 TOTAL</Badge>
             </div>
           </CardHeader>
@@ -47,10 +47,10 @@ export default function TasksPage() {
               <table className="w-full text-left">
                 <thead className="text-xs text-muted-foreground uppercase border-b border-white/5 bg-white/5">
                   <tr>
-                    <th className="px-6 py-4 font-bold">Process Name</th>
-                    <th className="px-6 py-4 font-bold">Schedule</th>
-                    <th className="px-6 py-4 font-bold">Status</th>
-                    <th className="px-6 py-4 font-bold">Priority</th>
+                    <th className="px-6 py-4 font-bold">Nombre del Proceso</th>
+                    <th className="px-6 py-4 font-bold">Horario</th>
+                    <th className="px-6 py-4 font-bold">Estado</th>
+                    <th className="px-6 py-4 font-bold">Prioridad</th>
                     <th className="px-6 py-4 font-bold"></th>
                   </tr>
                 </thead>
@@ -72,8 +72,8 @@ export default function TasksPage() {
                       <td className="px-6 py-4">
                         <Badge className={cn(
                           "text-[10px]",
-                          task.status === 'Completed' ? 'bg-accent/20 text-accent border-accent/30' :
-                          task.status === 'In Progress' ? 'bg-primary/20 text-primary border-primary/30 pulse-glow' :
+                          task.status === 'Completado' ? 'bg-accent/20 text-accent border-accent/30' :
+                          task.status === 'En Progreso' ? 'bg-primary/20 text-primary border-primary/30 pulse-glow' :
                           'bg-muted text-muted-foreground border-white/10'
                         )}>
                           {task.status.toUpperCase()}
@@ -82,9 +82,10 @@ export default function TasksPage() {
                       <td className="px-6 py-4">
                         <span className={cn(
                           "text-xs font-bold",
-                          task.priority === 'Critical' ? 'text-destructive' :
-                          task.priority === 'High' ? 'text-primary' :
-                          'text-muted-foreground'
+                          task.priority === 'Crítica' ? 'text-destructive' :
+                          task.priority === 'Alta' ? 'text-primary' :
+                          task.priority === 'Baja' ? 'text-muted-foreground' :
+                          'text-accent'
                         )}>
                           {task.priority}
                         </span>
@@ -97,20 +98,20 @@ export default function TasksPage() {
                             </Button>
                           </DropdownMenuTrigger>
                           <DropdownMenuContent align="end" className="glass-card">
-                            <DropdownMenuLabel>Actions</DropdownMenuLabel>
+                            <DropdownMenuLabel>Acciones</DropdownMenuLabel>
                             <DropdownMenuSeparator />
                             <DropdownMenuItem className="gap-2">
-                              <Play className="w-3 h-3 text-accent" /> Resume
+                              <Play className="w-3 h-3 text-accent" /> Reanudar
                             </DropdownMenuItem>
                             <DropdownMenuItem className="gap-2">
-                              <Pause className="w-3 h-3 text-primary" /> Pause
+                              <Pause className="w-3 h-3 text-primary" /> Pausar
                             </DropdownMenuItem>
                             <DropdownMenuItem className="gap-2 text-destructive">
-                              <Square className="w-3 h-3 fill-current" /> Terminate
+                              <Square className="w-3 h-3 fill-current" /> Terminar
                             </DropdownMenuItem>
                             <DropdownMenuSeparator />
                             <DropdownMenuItem className="gap-2">
-                              <Settings2 className="w-3 h-3" /> Configure
+                              <Settings2 className="w-3 h-3" /> Configurar
                             </DropdownMenuItem>
                           </DropdownMenuContent>
                         </DropdownMenu>

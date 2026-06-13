@@ -25,10 +25,10 @@ import {
 import { systemMetrics } from "@/app/lib/mock-data"
 
 const stats = [
-  { label: "Active Nodes", value: "342", trend: "+12.5%", icon: Cpu, color: "text-primary" },
-  { label: "Live Users", value: "12.8k", trend: "+4.2%", icon: Users, color: "text-accent" },
-  { label: "Global Traffic", value: "2.4 GB/s", trend: "+1.8%", icon: Globe, color: "text-primary" },
-  { label: "Latency", value: "14ms", trend: "-2.1%", icon: Activity, color: "text-accent" },
+  { label: "Nodos Activos", value: "342", trend: "+12.5%", icon: Cpu, color: "text-primary" },
+  { label: "Usuarios en Vivo", value: "12.8k", trend: "+4.2%", icon: Users, color: "text-accent" },
+  { label: "Tráfico Global", value: "2.4 GB/s", trend: "+1.8%", icon: Globe, color: "text-primary" },
+  { label: "Latencia", value: "14ms", trend: "-2.1%", icon: Activity, color: "text-accent" },
 ]
 
 export default function DashboardPage() {
@@ -47,7 +47,7 @@ export default function DashboardPage() {
               <div className="text-3xl font-headline font-bold">{stat.value}</div>
               <p className="text-xs text-muted-foreground flex items-center gap-1 mt-1">
                 <span className={stat.trend.startsWith('+') ? "text-accent" : "text-primary"}>{stat.trend}</span> 
-                vs last hour
+                vs última hora
               </p>
             </CardContent>
           </Card>
@@ -59,8 +59,8 @@ export default function DashboardPage() {
           <CardHeader>
             <div className="flex items-center justify-between">
               <div>
-                <CardTitle className="font-headline text-xl">System Performance</CardTitle>
-                <CardDescription>Real-time resource allocation and load</CardDescription>
+                <CardTitle className="font-headline text-xl">Rendimiento del Sistema</CardTitle>
+                <CardDescription>Asignación de recursos y carga en tiempo real</CardDescription>
               </div>
               <TrendingUp className="text-primary w-5 h-5" />
             </div>
@@ -114,8 +114,8 @@ export default function DashboardPage() {
           <CardHeader>
              <div className="flex items-center justify-between">
               <div>
-                <CardTitle className="font-headline text-xl">User Saturation</CardTitle>
-                <CardDescription>Concurrent connections across global clusters</CardDescription>
+                <CardTitle className="font-headline text-xl">Saturación de Usuarios</CardTitle>
+                <CardDescription>Conexiones concurrentes en clústeres globales</CardDescription>
               </div>
               <Users className="text-accent w-5 h-5" />
             </div>
@@ -162,7 +162,7 @@ export default function DashboardPage() {
       <div className="grid gap-6 lg:grid-cols-3">
         <Card className="glass-card lg:col-span-2">
           <CardHeader>
-            <CardTitle className="font-headline text-xl">Queue Activity</CardTitle>
+            <CardTitle className="font-headline text-xl">Actividad de la Cola</CardTitle>
           </CardHeader>
           <CardContent>
             <div className="space-y-4">
@@ -173,14 +173,14 @@ export default function DashboardPage() {
                       <Clock className="w-5 h-5 text-primary" />
                     </div>
                     <div>
-                      <h4 className="font-bold text-sm">Batch Processing #{880 + item}</h4>
-                      <p className="text-xs text-muted-foreground">Orchestrated 4m ago • Node DC-0{item}</p>
+                      <h4 className="font-bold text-sm">Procesamiento por Lotes #{880 + item}</h4>
+                      <p className="text-xs text-muted-foreground">Orquestado hace 4m • Nodo DC-0{item}</p>
                     </div>
                   </div>
                   <div className="flex items-center gap-6">
                     <div className="text-right hidden sm:block">
-                      <p className="text-xs font-bold text-accent">SUCCESS</p>
-                      <p className="text-[10px] text-muted-foreground font-code">2ms delay</p>
+                      <p className="text-xs font-bold text-accent">ÉXITO</p>
+                      <p className="text-[10px] text-muted-foreground font-code">2ms retraso</p>
                     </div>
                     <ArrowUpRight className="w-4 h-4 text-muted-foreground group-hover:text-primary group-hover:translate-x-1 group-hover:-translate-y-1 transition-all" />
                   </div>
@@ -192,13 +192,13 @@ export default function DashboardPage() {
 
         <Card className="glass-card">
           <CardHeader>
-            <CardTitle className="font-headline text-xl">Cluster Health</CardTitle>
+            <CardTitle className="font-headline text-xl">Salud del Clúster</CardTitle>
           </CardHeader>
           <CardContent className="space-y-6">
             {[
-              { label: "Storage Capacity", val: 82, color: "bg-primary" },
-              { label: "Memory Buffer", val: 45, color: "bg-accent" },
-              { label: "CPU Threading", val: 68, color: "bg-primary" },
+              { label: "Capacidad de Almacenamiento", val: 82, color: "bg-primary" },
+              { label: "Búfer de Memoria", val: 45, color: "bg-accent" },
+              { label: "Hilos de CPU", val: 68, color: "bg-primary" },
             ].map((node, i) => (
               <div key={i} className="space-y-2">
                 <div className="flex justify-between text-xs font-medium">
@@ -217,7 +217,7 @@ export default function DashboardPage() {
               <div className="flex items-center justify-between p-3 rounded-lg bg-accent/10 border border-accent/20">
                 <div className="flex items-center gap-2">
                   <div className="w-2 h-2 rounded-full bg-accent pulse-glow" />
-                  <span className="text-xs font-bold text-accent uppercase">Optimized Engine</span>
+                  <span className="text-xs font-bold text-accent uppercase">Motor Optimizado</span>
                 </div>
                 <ChevronUp className="w-4 h-4 text-accent" />
               </div>

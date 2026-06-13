@@ -15,12 +15,12 @@ import {
 import { cn } from "@/lib/utils"
 
 const navItems = [
-  { label: "Dashboard", icon: LayoutDashboard, href: "/dashboard" },
-  { label: "Task Orchestrator", icon: ListTodo, href: "/dashboard/tasks" },
-  { label: "Observability", icon: Activity, href: "/dashboard/observability" },
-  { label: "AI Analytics", icon: BarChart3, href: "/dashboard/analytics" },
-  { label: "Administration", icon: ShieldCheck, href: "/dashboard/admin" },
-  { label: "Settings", icon: Settings, href: "/dashboard/settings" },
+  { label: "Panel de Control", icon: LayoutDashboard, href: "/dashboard" },
+  { label: "Orquestador", icon: ListTodo, href: "/dashboard/tasks" },
+  { label: "Observabilidad", icon: Activity, href: "/dashboard/observability" },
+  { label: "Analítica IA", icon: BarChart3, href: "/dashboard/analytics" },
+  { label: "Administración", icon: ShieldCheck, href: "/dashboard/admin" },
+  { label: "Configuración", icon: Settings, href: "/dashboard/settings" },
 ]
 
 export function DashboardNav() {
@@ -63,7 +63,7 @@ export function DashboardNav() {
       <div className="p-4 mt-auto">
         <button className="flex items-center gap-3 w-full px-3 py-2 text-muted-foreground hover:text-destructive transition-colors rounded-md hover:bg-destructive/10">
           <LogOut className="w-5 h-5" />
-          <span className="text-sm font-medium">Log out</span>
+          <span className="text-sm font-medium">Cerrar Sesión</span>
         </button>
       </div>
     </div>
