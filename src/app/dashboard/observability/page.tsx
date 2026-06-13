@@ -4,6 +4,7 @@ import { useState, useEffect } from "react"
 import { Terminal, ShieldAlert, Cpu, Database, Activity } from "lucide-react"
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
+import { cn } from "@/lib/utils"
 import { recentLogs } from "@/app/lib/mock-data"
 
 export default function ObservabilityPage() {
@@ -14,7 +15,7 @@ export default function ObservabilityPage() {
       const newLog = {
         id: Math.random().toString(),
         timestamp: new Date().toISOString(),
-        level: Math.random() > 0.85 ? 'WARN' : Math.random() > 0.95 ? 'ERROR' : 'INFO',
+        level: Math.random() > 0.85 ? 'WARN' : Math.random() > 0.95 ? 'ERROR' : ('INFO' as const),
         message: `Punto de control alcanzado para clúster-${Math.floor(Math.random() * 10)} en nodo ${Math.random().toString(36).substring(7).toUpperCase()}`
       }
       setLogs(prev => [newLog, ...prev.slice(0, 49)])
@@ -119,8 +120,4 @@ export default function ObservabilityPage() {
       </div>
     </div>
   )
-}
-
-function cn(...classes: string[]) {
-  return classes.filter(Boolean).join(' ')
 }

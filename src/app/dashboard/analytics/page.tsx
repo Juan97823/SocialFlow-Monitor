@@ -8,6 +8,8 @@ import { Input } from "@/components/ui/input"
 import { Badge } from "@/components/ui/badge"
 import { Progress } from "@/components/ui/progress"
 import { Separator } from "@/components/ui/separator"
+import { useToast } from "@/hooks/use-toast"
+import { cn } from "@/lib/utils"
 import { simulatedInteractionDataGenerator } from "@/ai/flows/simulated-interaction-data-generator-flow"
 import { aiSentimentAnalysis } from "@/ai/flows/ai-sentiment-analysis-flow"
 import { generateAnalyticalInsight, type AnalyticalInsightGeneratorOutput } from "@/ai/flows/analytical-insight-generator-flow"
@@ -18,39 +20,66 @@ export default function AnalyticsPage() {
   const [results, setResults] = useState<any[]>([])
   const [stats, setStats] = useState({ pos: 0, neu: 0, neg: 0 })
   const [insight, setInsight] = useState<AnalyticalInsightGeneratorOutput | null>(null)
+  const { toast } = useToast()
 
   const runFullAnalysis = async () => {
     setLoading(true)
     setInsight(null)
     try {
       // 1. Generar interacciones
-      const { interactions } = await simulatedInteractionDataGenerator({ topicOrScenario: topic })
+      const genResult = await simulatedInteractionDataGenerator({ topicOrScenario: topic })
+      const interactions = genResult?.interactions || []
+
+      if (interactions.length === 0) {
+        toast({
+          variant: "destructive",
+          title: "Error de generación",
+          description: "No se pudieron generar interacciones para este tema.",
+        })
+        return
+      }
       
       // 2. Analizar sentimiento (limitado a 6 para el demo)
       const analyzed = await Promise.all(
         interactions.slice(0, 6).map(async (item) => {
-          const { sentiment } = await aiSentimentAnalysis({ interactionData: item.content })
-          return { ...item, sentiment }
+          try {
+            const { sentiment } = await aiSentimentAnalysis({ interactionData: item.content })
+            return { ...item, sentiment: sentiment || 'neutral' }
+          } catch (e) {
+            return { ...item, sentiment: 'neutral' }
+          }
         })
       )
 
       setResults(analyzed)
       
       const s = analyzed.reduce((acc, curr) => {
-        acc[curr.sentiment === 'positive' ? 'pos' : curr.sentiment === 'negative' ? 'neg' : 'neu']++
+        const key = curr.sentiment === 'positive' ? 'pos' : curr.sentiment === 'negative' ? 'neg' : 'neu'
+        acc[key]++
         return acc
       }, { pos: 0, neu: 0, neg: 0 })
       
       setStats(s)
 
       // 3. Generar informe analítico profundo
-      const report = await generateAnalyticalInsight({
-        trends: `Flujo constante sobre ${topic}. Se observa un volumen de ${interactions.length} menciones simuladas.`,
-        metrics: `Sentimiento predominante: ${s.pos > s.neg ? 'Positivo' : 'Negativo'}. Distribución: ${s.pos} Pos, ${s.neu} Neu, ${s.neg} Neg.`,
-        eventHistory: analyzed.map(a => `[${a.type}] @${a.user}: ${a.sentiment}`).join(", ")
-      })
+      try {
+        const report = await generateAnalyticalInsight({
+          trends: `Flujo constante sobre ${topic}. Se observa un volumen de ${interactions.length} menciones simuladas.`,
+          metrics: `Sentimiento predominante: ${s.pos > s.neg ? 'Positivo' : 'Negativo'}. Distribución: ${s.pos} Pos, ${s.neu} Neu, ${s.neg} Neg.`,
+          eventHistory: analyzed.map(a => `[${a.type}] @${a.user}: ${a.sentiment}`).join(", ")
+        })
+        setInsight(report)
+      } catch (e) {
+        console.error("Error generating insight report", e)
+      }
 
-      setInsight(report)
+    } catch (error) {
+      console.error(error)
+      toast({
+        variant: "destructive",
+        title: "Fallo en el Motor IA",
+        description: "Hubo un error al procesar la solicitud. Por favor, intenta de nuevo.",
+      })
     } finally {
       setLoading(false)
     }
@@ -104,12 +133,14 @@ export default function AnalyticsPage() {
                           res.sentiment === 'negative' ? 'text-destructive border-destructive/30' : 
                           'text-muted-foreground border-white/10'
                         )}>
-                          {res.sentiment.toUpperCase()}
+                          {(res.sentiment || 'neutral').toUpperCase()}
                         </Badge>
                       </div>
                       <p className="text-sm text-foreground/80 leading-relaxed italic line-clamp-3">"{res.content}"</p>
                     </div>
-                    <p className="text-[10px] text-muted-foreground mt-2 uppercase tracking-tighter">{res.type} • {new Date(res.timestamp).toLocaleTimeString()}</p>
+                    <p className="text-[10px] text-muted-foreground mt-2 uppercase tracking-tighter">
+                      {res.type} • {res.timestamp ? new Date(res.timestamp).toLocaleTimeString() : 'N/A'}
+                    </p>
                   </div>
                 ))}
               </div>
@@ -212,8 +243,4 @@ export default function AnalyticsPage() {
       )}
     </div>
   )
-}
-
-function cn(...classes: string[]) {
-  return classes.filter(Boolean).join(' ')
 }
