@@ -1,4 +1,4 @@
-# **App Name**: SocialFlow Monitor
+# **App Name**: DevStock SAS Monitor
 
 ## Core Features:
 

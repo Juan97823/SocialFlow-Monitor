@@ -49,7 +49,7 @@ export default function SettingsPage() {
             <Settings2 className="w-8 h-8 text-primary" /> 
             Configuración del Sistema
           </h2>
-          <p className="text-muted-foreground">Personaliza el comportamiento del núcleo de SocialFlow y tus preferencias de operador.</p>
+          <p className="text-muted-foreground">Personaliza el comportamiento del núcleo de DevStock SAS y tus preferencias de operador.</p>
         </div>
         <Button onClick={handleSave} disabled={loading} className="glow-primary">
           <Save className="w-4 h-4 mr-2" /> 
@@ -77,7 +77,7 @@ export default function SettingsPage() {
           <Card className="glass-card">
             <CardHeader>
               <CardTitle className="text-lg font-headline">Datos del Operador</CardTitle>
-              <CardDescription>Información de identidad dentro de la red SocialFlow.</CardDescription>
+              <CardDescription>Información de identidad dentro de la red DevStock SAS.</CardDescription>
             </CardHeader>
             <CardContent className="space-y-6">
               <div className="flex items-center gap-6">
@@ -98,7 +98,7 @@ export default function SettingsPage() {
                 </div>
                 <div className="space-y-2">
                   <Label className="text-xs uppercase tracking-wider text-muted-foreground">Email del Clúster</Label>
-                  <Input defaultValue="admin@socialflow.node" className="bg-black/20 border-white/10" />
+                  <Input defaultValue="admin@devstocksas.node" className="bg-black/20 border-white/10" />
                 </div>
               </div>
             </CardContent>

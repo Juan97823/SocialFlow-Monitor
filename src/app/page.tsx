@@ -16,7 +16,7 @@ export default function LandingPage() {
             <Zap className="text-primary-foreground w-5 h-5 fill-current" />
           </div>
           <span className="font-headline font-bold text-2xl tracking-tight text-white">
-            SocialFlow<span className="text-primary">.</span>
+            DevStock SAS<span className="text-primary">.</span>
           </span>
         </div>
         <nav className="hidden md:flex items-center gap-8">
@@ -108,9 +108,9 @@ export default function LandingPage() {
         <div className="flex flex-col md:flex-row items-center justify-between gap-6">
           <div className="flex items-center gap-2">
             <Zap className="text-primary w-5 h-5 fill-current" />
-            <span className="font-headline font-bold text-white">SocialFlow.</span>
+            <span className="font-headline font-bold text-white">DevStock SAS.</span>
           </div>
-          <p className="text-sm text-muted-foreground">© 2024 SocialFlow Monitor Inc. Todos los derechos reservados.</p>
+          <p className="text-sm text-muted-foreground">© 2024 DevStock SAS. Todos los derechos reservados.</p>
           <div className="flex items-center gap-6">
             <Shield className="w-5 h-5 text-muted-foreground hover:text-white transition-colors cursor-pointer" />
             <Cpu className="w-5 h-5 text-muted-foreground hover:text-white transition-colors cursor-pointer" />

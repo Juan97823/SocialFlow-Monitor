@@ -34,7 +34,7 @@ export function DashboardNav() {
             <Zap className="text-primary-foreground w-5 h-5 fill-current" />
           </div>
           <span className="font-headline font-bold text-xl tracking-tight text-foreground">
-            SocialFlow<span className="text-primary">.</span>
+            DevStock SAS<span className="text-primary">.</span>
           </span>
         </div>
       </div>

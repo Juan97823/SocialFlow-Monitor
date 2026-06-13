@@ -2,7 +2,7 @@ import type {Metadata} from 'next';
 import './globals.css';
 
 export const metadata: Metadata = {
-  title: 'SocialFlow Monitor | Orquestación Distribuida',
+  title: 'DevStock SAS Monitor | Orquestación Distribuida',
   description: 'Plataforma moderna de análisis de interacciones digitales y orquestación de tareas.',
 };
 

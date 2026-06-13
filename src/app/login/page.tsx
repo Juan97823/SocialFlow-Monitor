@@ -20,7 +20,7 @@ export default function LoginPage() {
             <Zap className="text-primary-foreground w-6 h-6 fill-current" />
           </div>
           <span className="font-headline font-bold text-3xl tracking-tight text-white">
-            SocialFlow<span className="text-primary">.</span>
+            DevStock SAS<span className="text-primary">.</span>
           </span>
         </div>
 
@@ -34,7 +34,7 @@ export default function LoginPage() {
               <label className="text-xs font-bold uppercase tracking-widest text-muted-foreground">Email del Clúster</label>
               <div className="relative">
                 <Mail className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-muted-foreground" />
-                <Input placeholder="admin@socialflow.node" className="pl-10 bg-black/20 border-white/10 focus:border-primary/50 transition-colors" />
+                <Input placeholder="admin@devstocksas.node" className="pl-10 bg-black/20 border-white/10 focus:border-primary/50 transition-colors" />
               </div>
             </div>
             <div className="space-y-2">
